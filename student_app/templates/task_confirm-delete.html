@@ -1,0 +1,21 @@
+<!-- students/templates/students/task_confirm_delete.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Task Confirmation</title>
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}"> <!-- Bootstrap CSS -->
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Delete Task</h2>
+        <p>Are you sure you want to delete the task "{{ task.title }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Confirm Deletion</button>
+            <a href="{% url 'task_list' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

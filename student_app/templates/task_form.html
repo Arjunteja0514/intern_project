@@ -1,0 +1,25 @@
+<!-- students/templates/students/task_form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if form.instance.pk %}Update Task{% else %}Create Task{% endif %}</title>
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}"> <!-- Bootstrap CSS -->
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>{% if form.instance.pk %}Update Task{% else %}Create Task{% endif %}</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }} <!-- Render form fields -->
+            <button type="submit" class="btn btn-primary">{% if form.instance.pk %}Update{% else %}Create{% endif %}</button>
+        </form>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success mt-3">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>
